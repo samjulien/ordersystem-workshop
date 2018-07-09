@@ -6,7 +6,7 @@ angular.module('app').controller('customerDetailController', [
   'orderService',
   function($scope, customer, customerService, addressFactory, orderService) {
     $scope.title = 'Customer Detail';
-    $scope.discountTemplate = '../templates/discount.html';
+    $scope.discountTemplate = './customerDetail/discount.html';
     $scope.customer = customer;
     $scope.address = addressFactory.getFullAddress(customer);
     $scope.editDiscount = false;

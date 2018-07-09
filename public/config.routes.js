@@ -3,27 +3,27 @@ angular.module('app').config([
   function($routeProvider) {
     $routeProvider
       .when('/', {
-        templateUrl: './templates/home.html',
+        templateUrl: './home/home.html',
         controller: 'homeController'
       })
       .when('/customers', {
-        templateUrl: './templates/customers.html',
+        templateUrl: './customers/customers.html',
         controller: 'customersController'
       })
       .when('/orders', {
-        templateUrl: './templates/orders.html',
+        templateUrl: './orders/orders.html',
         controller: 'ordersController'
       })
       .when('/orders/create', {
-        templateUrl: './templates/createOrder.html',
+        templateUrl: './createOrder/createOrder.html',
         controller: 'createOrder'
       })
       .when('/products', {
-        templateUrl: './templates/products.html',
+        templateUrl: './products/products.html',
         controller: 'productsController'
       })
       .when('/customers/:id', {
-        templateUrl: './templates/customerDetail.html',
+        templateUrl: './customerDetail/customerDetail.html',
         controller: 'customerDetailController',
         resolve: {
           customer: [
@@ -37,7 +37,7 @@ angular.module('app').config([
         }
       })
       .when('/orders/:id', {
-        templateUrl: './templates/orderDetail.html',
+        templateUrl: './orderDetail/orderDetail.html',
         controller: 'orderDetailController',
         resolve: {
           order: [
@@ -51,7 +51,7 @@ angular.module('app').config([
         }
       })
       .when('/products/:id', {
-        templateUrl: './templates/productDetail.html',
+        templateUrl: './productDetail/productDetail.html',
         controller: 'productDetailController',
         resolve: {
           product: [
