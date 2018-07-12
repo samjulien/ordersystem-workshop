@@ -23,6 +23,10 @@
           });
         });
     };
+
+    vm.updateDiscount = function(discount) {
+      vm.customer.discount = discount;
+    };
   }
 
   angular.module('app').component('customerDetail', customerDetailComponent);

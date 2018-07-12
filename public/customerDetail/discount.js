@@ -4,7 +4,8 @@
   var discountComponent = {
     templateUrl: './customerDetail/discount.html',
     bindings: {
-      customerDiscount: '='
+      customerDiscount: '<',
+      update: '&'
     },
     controller: discountComponentController
   };
@@ -35,6 +36,7 @@
     };
 
     vm.updateDiscountType = function() {
+      vm.update({ discount: vm.selectedDiscount });
       vm.editDiscount = false;
     };
   }
