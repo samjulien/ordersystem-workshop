@@ -2,17 +2,17 @@
   <div class="col-md-8">
     <div class="form-group row">
       <label for="inputDiscountType" class="col-md-4 col-sm-4 col-form-label margin-top-6">Discount Type</label>
-      <div class="col-md-4 col-sm-4 margin-top-6" data-ng-if="!editDiscount">
-        {{customer.discount.discountName}}
+      <div class="col-md-4 col-sm-4 margin-top-6" data-ng-if="!$ctrl.editDiscount">
+        {{$ctrl.customerDiscount.discountName}}
       </div>
-      <div class="col-md-4 col-sm-4" data-ng-if="editDiscount">
-        <select class="form-control" id="inputDiscountType" data-ng-options="discount as discount.discountName for discount in discounts"
-          data-ng-model="customer.discount">
+      <div class="col-md-4 col-sm-4" data-ng-if="$ctrl.editDiscount">
+        <select class="form-control" id="inputDiscountType" data-ng-options="discount as discount.discountName for discount in $ctrl.discounts"
+          data-ng-model="$ctrl.customerDiscount">
         </select>
       </div>
       <div class="col-md-2 col-sm-3 end">
-        <button class="btn btn-info" data-ng-if="!editDiscount" data-ng-click="editDiscountType()">Edit</button>
-        <button class="btn btn-info" data-ng-if="editDiscount" data-ng-click="updateDiscountType()">Save</button>
+        <button class="btn btn-info" data-ng-if="!$ctrl.editDiscount" data-ng-click="$ctrl.editDiscountType()">Edit</button>
+        <button class="btn btn-info" data-ng-if="$ctrl.editDiscount" data-ng-click="$ctrl.updateDiscountType()">Save</button>
       </div>
     </div>
     <div class="form-group row">
@@ -20,7 +20,7 @@
         <b>Discount Percent:</b>
       </div>
       <div class="col-md-4 col-sm-4 end">
-        {{customer.discount.discountPercent}}%
+        {{$ctrl.customerDiscount.discountPercent}}%
       </div>
     </div>
   </div>
