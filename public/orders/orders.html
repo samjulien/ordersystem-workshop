@@ -1,5 +1,5 @@
 <div class="row">
-  <h1>{{title}}</h1>
+  <h1>{{$ctrl.title}}</h1>
 </div>
 <div class="row">
   <div class="col-sm-12">
@@ -9,10 +9,10 @@
           <div class="input-group-addon">
             <i class="fa fa-search"></i>
           </div>
-          <input type="text" class="form-control" placeholder="Filter Orders" data-ng-model="filterOrders">
+          <input type="text" class="form-control" placeholder="Filter Orders" data-ng-model="$ctrl.filterOrders">
         </div>
       </div>
-      <button type="button" data-ng-click="goToCreateOrder()" class="btn btn-info">Create Order</button>
+      <button type="button" data-ng-click="$ctrl.goToCreateOrder()" class="btn btn-info">Create Order</button>
     </form>
   </div>
 </div>
@@ -22,37 +22,37 @@
       <thead>
         <tr>
           <th>
-            <a href="" data-ng-click="sortType = 'id'; sortReverse = !sortReverse">
+            <a href="" data-ng-click="$ctrl.sortType = 'id'; $ctrl.sortReverse = !$ctrl.sortReverse">
               Order Id
-              <span data-ng-show="sortType == 'id' && !sortReverse" class="fa fa-caret-down"></span>
-              <span data-ng-show="sortType == 'id' && sortReverse" class="fa fa-caret-up"></span>
+              <span data-ng-show="$ctrl.sortType == 'id' && !$ctrl.sortReverse" class="fa fa-caret-down"></span>
+              <span data-ng-show="$ctrl.sortType == 'id' && $ctrl.sortReverse" class="fa fa-caret-up"></span>
             </a>
           </th>
           <th>
-            <a href="" data-ng-click="sortType = 'customerName'; sortReverse = !sortReverse">
+            <a href="" data-ng-click="$ctrl.sortType = 'customerName'; $ctrl.sortReverse = !$ctrl.sortReverse">
               Customer Name
-              <span data-ng-show="sortType == 'customerName' && !sortReverse" class="fa fa-caret-down"></span>
-              <span data-ng-show="sortType == 'customerName' && sortReverse" class="fa fa-caret-up"></span>
+              <span data-ng-show="$ctrl.sortType == 'customerName' && !$ctrl.sortReverse" class="fa fa-caret-down"></span>
+              <span data-ng-show="$ctrl.sortType == 'customerName' && $ctrl.sortReverse" class="fa fa-caret-up"></span>
             </a>
           </th>
           <th>
-            <a href="" data-ng-click="sortType = 'totalItems'; sortReverse = !sortReverse">
+            <a href="" data-ng-click="$ctrl.sortType = 'totalItems'; $ctrl.sortReverse = !$ctrl.sortReverse">
               Total Items
-              <span data-ng-show="sortType == 'totalItems' && !sortReverse" class="fa fa-caret-down"></span>
-              <span data-ng-show="sortType == 'totalItems' && sortReverse" class="fa fa-caret-up"></span>
+              <span data-ng-show="$ctrl.sortType == 'totalItems' && !$ctrl.sortReverse" class="fa fa-caret-down"></span>
+              <span data-ng-show="$ctrl.sortType == 'totalItems' && $ctrl.sortReverse" class="fa fa-caret-up"></span>
             </a>
           </th>
           <th>
-            <a href="" data-ng-click="sortType = 'totalSale'; sortReverse = !sortReverse">
+            <a href="" data-ng-click="$ctrl.sortType = 'totalSale'; $ctrl.sortReverse = !$ctrl.sortReverse">
               Total Sale
-              <span data-ng-show="sortType == 'totalSale' && !sortReverse" class="fa fa-caret-down"></span>
-              <span data-ng-show="sortType == 'totalSale' && sortReverse" class="fa fa-caret-up"></span>
+              <span data-ng-show="$ctrl.sortType == 'totalSale' && !$ctrl.sortReverse" class="fa fa-caret-down"></span>
+              <span data-ng-show="$ctrl.sortType == 'totalSale' && $ctrl.sortReverse" class="fa fa-caret-up"></span>
             </a>
           </th>
         </tr>
       </thead>
       <tbody>
-        <tr data-ng-repeat="order in orders | orderBy:sortType:sortReverse | filter:filterOrders">
+        <tr data-ng-repeat="order in $ctrl.orders | orderBy:$ctrl.sortType:$ctrl.sortReverse | filter:$ctrl.filterOrders">
           <td>
             <a data-ng-href="#/orders/{{order.id}}">{{order.id}}</a>
           </td>

@@ -1,8 +1,12 @@
-angular.module('app', ['ngRoute']);
+(function() {
+  'use strict';
 
-angular.module('app').config([
-  '$locationProvider',
-  function($locationProvider) {
-    $locationProvider.hashPrefix('');
-  }
-]);
+  angular.module('app', ['ngRoute']);
+
+  angular.module('app').config([
+    '$locationProvider',
+    function($locationProvider) {
+      $locationProvider.hashPrefix('');
+    }
+  ]);
+})();

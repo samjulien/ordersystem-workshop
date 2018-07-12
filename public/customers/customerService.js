@@ -1,6 +1,8 @@
-angular.module('app').service('customerService', [
-  '$http',
-  function($http) {
+(function() {
+  'use strict';
+
+  customerService.$inject = ['$http'];
+  function customerService($http) {
     function getCustomers() {
       return $http.get('/api/customers').then(function(response) {
         return response.data;
@@ -18,4 +20,6 @@ angular.module('app').service('customerService', [
       getCustomer: getCustomer
     };
   }
-]);
+
+  angular.module('app').service('customerService', customerService);
+})();

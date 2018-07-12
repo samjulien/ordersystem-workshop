@@ -1,30 +1,40 @@
-angular.module('app').controller('ordersController', [
-  '$location',
-  '$scope',
-  'orderService',
-  'customerService',
-  '$q',
-  function($location, $scope, orderService, customerService, $q) {
-    $scope.title = 'Orders';
+(function() {
+  'use strict';
 
-    activate();
+  var ordersComponent = {
+    templateUrl: './orders/orders.html',
+    bindings: {},
+    controller: ordersController
+  };
 
-    function activate() {
+  ordersController.$inject = [
+    '$location',
+    'orderService',
+    'customerService',
+    '$q'
+  ];
+  function ordersController($location, orderService, customerService, $q) {
+    var vm = this;
+    vm.title = 'Orders';
+
+    vm.$onInit = function() {
       var promises = [customerService.getCustomers(), orderService.getOrders()];
       return $q.all(promises).then(function(data) {
-        $scope.customers = data[0];
-        $scope.orders = data[1];
-        $scope.orders.forEach(function(order) {
-          var customer = _.find($scope.customers, function(customer) {
+        vm.customers = data[0];
+        vm.orders = data[1];
+        vm.orders.forEach(function(order) {
+          var customer = _.find(vm.customers, function(customer) {
             return order.customerId === customer.id;
           });
           order.customerName = customer.fullName;
         });
       });
-    }
+    };
 
-    $scope.goToCreateOrder = function() {
+    vm.goToCreateOrder = function() {
       $location.path('/orders/create');
     };
   }
-]);
+
+  angular.module('app').component('orders', ordersComponent);
+})();

@@ -1,25 +1,23 @@
-angular.module('app').config([
-  '$routeProvider',
-  function($routeProvider) {
+(function() {
+  'use strict';
+
+  routeProviderConfig.$inject = ['$routeProvider'];
+  function routeProviderConfig($routeProvider) {
     $routeProvider
       .when('/', {
-        templateUrl: './home/home.html',
-        controller: 'homeController'
+        template: '<home></home>'
       })
       .when('/customers', {
         template: '<customers></customers>'
       })
       .when('/orders', {
-        templateUrl: './orders/orders.html',
-        controller: 'ordersController'
+        template: '<orders></orders>'
       })
       .when('/orders/create', {
-        templateUrl: './createOrder/createOrder.html',
-        controller: 'createOrder'
+        template: '<create-order></create-order>'
       })
       .when('/products', {
-        templateUrl: './products/products.html',
-        controller: 'productsController'
+        template: '<products></products>'
       })
       .when('/customers/:id', {
         template:
@@ -36,8 +34,7 @@ angular.module('app').config([
         }
       })
       .when('/orders/:id', {
-        templateUrl: './orderDetail/orderDetail.html',
-        controller: 'orderDetailController',
+        template: '<order-detail order="$resolve.order"></order-detail>',
         resolve: {
           order: [
             '$route',
@@ -50,8 +47,8 @@ angular.module('app').config([
         }
       })
       .when('/products/:id', {
-        templateUrl: './productDetail/productDetail.html',
-        controller: 'productDetailController',
+        template:
+          '<product-detail product="$resolve.product"></product-detail>',
         resolve: {
           product: [
             '$route',
@@ -64,4 +61,6 @@ angular.module('app').config([
         }
       });
   }
-]);
+
+  angular.module('app').config(routeProviderConfig);
+})();

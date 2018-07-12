@@ -1,21 +1,30 @@
-angular.module('app').controller('createOrder', [
-  '$scope',
-  '$q',
-  'orderService',
-  'customerService',
-  '$location',
-  'productService',
-  function createOrderComponentController(
-    $scope,
+(function() {
+  'use strict';
+
+  var createOrderComponent = {
+    templateUrl: './createOrder/createOrder.html',
+    bindings: {},
+    controller: createOrderController
+  };
+
+  createOrderController.$inject = [
+    '$q',
+    'orderService',
+    'customerService',
+    '$location',
+    'productService'
+  ];
+  function createOrderController(
     $q,
     orderService,
     customerService,
     $location,
     productService
   ) {
-    $scope.title = 'Create Order';
+    var vm = this;
+    vm.title = 'Create Order';
 
-    $scope.newOrder = {
+    vm.newOrder = {
       customerId: null,
       items: [
         {
@@ -29,27 +38,27 @@ angular.module('app').controller('createOrder', [
       ]
     };
 
-    activate();
-
-    function activate() {
+    vm.$onInit = function() {
       var promises = [
         productService.getProducts(),
         customerService.getCustomers()
       ];
       return $q.all(promises).then(function(data) {
-        $scope.products = data[0];
-        $scope.customers = data[1];
+        vm.products = data[0];
+        vm.customers = data[1];
       });
-    }
+    };
 
-    $scope.postOrder = function() {
-      $scope.newOrder.items = $scope.newOrder.items.filter(function(x) {
+    vm.postOrder = function() {
+      vm.newOrder.items = vm.newOrder.items.filter(function(x) {
         return x.productId !== null;
       });
 
-      return orderService.postOrder($scope.newOrder).then(() => {
+      return orderService.postOrder(vm.newOrder).then(() => {
         $location.path('/orders');
       });
     };
   }
-]);
+
+  angular.module('app').component('createOrder', createOrderComponent);
+})();
