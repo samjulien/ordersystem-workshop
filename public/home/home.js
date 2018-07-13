@@ -1,16 +1,10 @@
-(function() {
-  'use strict';
+export var homeComponent = {
+  templateUrl: './home/home.html',
+  bindings: {},
+  controller: homeController
+};
 
-  var homeComponent = {
-    templateUrl: './home/home.html',
-    bindings: {},
-    controller: homeController
-  };
-
-  function homeController() {
-    var vm = this;
-    vm.title = 'Awesome, Inc. Internal Ordering System';
-  }
-
-  angular.module('app').component('home', homeComponent);
-})();
+function homeController() {
+  var vm = this;
+  vm.title = 'Awesome, Inc. Internal Ordering System';
+}
