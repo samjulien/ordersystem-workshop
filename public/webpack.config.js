@@ -14,5 +14,14 @@ module.exports = {
   },
   resolve: {
     extensions: ['.ts', '.js']
+  },
+  devtool: 'source-map',
+  devServer: {
+    contentBase: './',
+    publicPath: '/dist/',
+    port: 9000,
+    proxy: {
+      '/api': 'http://localhost:9001'
+    }
   }
 };

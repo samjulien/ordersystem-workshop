@@ -4,6 +4,8 @@
   "description": "The project for the UpgradingAngularJS workshop.",
   "main": "app.js",
   "scripts": {
+    "build": "webpack --bail --progress --mode=production",
+    "dev": "webpack-dev-server --mode=development",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Sam Julien",
