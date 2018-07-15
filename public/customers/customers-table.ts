@@ -1,5 +1,7 @@
+const template = require('./customers-table.html');
+
 export const customersTableComponent = {
-  templateUrl: './customers/customers-table.html',
+  template: template,
   bindings: {
     customers: '<'
   },

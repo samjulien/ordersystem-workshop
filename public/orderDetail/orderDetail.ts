@@ -1,7 +1,9 @@
 import * as _ from 'lodash';
 
+const template = require('./orderDetail.html');
+
 export const orderDetailComponent = {
-  templateUrl: './orderDetail/orderDetail.html',
+  template: template,
   bindings: {
     order: '<'
   },

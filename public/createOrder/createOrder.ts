@@ -1,5 +1,7 @@
+const template = require('./createOrder.html');
+
 export const createOrderComponent = {
-  templateUrl: './createOrder/createOrder.html',
+  template: template,
   bindings: {},
   controller: createOrderController
 };
