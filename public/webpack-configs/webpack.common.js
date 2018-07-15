@@ -1,7 +1,10 @@
+const path = require('path');
+
 module.exports = {
   entry: './app.ts',
   output: {
-    filename: 'bundle.js'
+    filename: 'bundle.js',
+    path: path.resolve(__dirname, '../../', 'dist')
   },
   module: {
     rules: [
@@ -16,14 +19,7 @@ module.exports = {
       },
       {
         test: /\.(woff|woff2|eot|ttf|svg)$/,
-        use: [
-          {
-            loader: 'file-loader',
-            options: {
-              publicPath: '/dist/'
-            }
-          }
-        ]
+        use: 'file-loader'
       }
     ]
   },

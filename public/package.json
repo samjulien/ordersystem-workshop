@@ -5,6 +5,7 @@
   "main": "app.js",
   "scripts": {
     "build": "webpack --bail --progress --mode=production",
+    "build:prod": "npm run build -- --env.env=prod",
     "dev": "webpack-dev-server --mode=development --env.env=dev",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
