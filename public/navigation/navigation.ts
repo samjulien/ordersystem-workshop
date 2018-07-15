@@ -1,5 +1,7 @@
+const template = require('./navigation.html');
+
 export const navigationComponent = {
-  templateUrl: '../navigation/navigation.html',
+  template: template,
   bindings: {},
   controller: navigationComponentController
 };
